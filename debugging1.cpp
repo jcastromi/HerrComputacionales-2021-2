@@ -83,9 +83,9 @@ void print_array1(const double data[], const int & size)
     for (int o=0; o < size; ++o)
     {
         j[o]=j[o]-k;
-        std::cout << std::endl;
         std::cout << j[o] << " ";
     }
+     std::cout << std::endl;
 }
 void print_array2(const double data[], const int & size)
 {
@@ -94,9 +94,10 @@ void print_array2(const double data[], const int & size)
     for (int o=0; o < size; ++o)
     {
         j[o]=j[o]-l;
-        std::cout << std::endl;
+
         std::cout << j[o] << " ";
     }
+     std::cout << std::endl;
 }
 void print_array3(const double data[], const int & size)
 {
@@ -105,9 +106,10 @@ void print_array3(const double data[], const int & size)
     for (int o=0; o < size; ++o)
     {
         j[o]=j[o]+m+n;
-        std::cout << std::endl;
+
         std::cout << j[o] << " ";
     }
+     std::cout << std::endl;
 }
 void print_array(const double data[], const int & size)
 {
