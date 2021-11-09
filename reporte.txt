@@ -1,0 +1,64 @@
+Reporte:
+En primer lugar se resolvió el inconveniente de la doble declaración de int ii y
+jj. Cambiando el nombre de las variables en los loops for por ee (el otro se
+eliminó como se explicará más adelante).
+
+Habiendo solucionado la doble declaración se revisaron las primeras lineas del
+código en donde se utiliza la función foo. En esta se presentaba un error de
+punto flotante del tipo n/0. Para solucionarlo se modificó el valor de ii por
+uno diferente de 0, para lo cual se eligió ii=1 debido a que este mantiene
+inmodificada la definición de las funciones foo y bar utilizando int en lugar de
+double, caso que se dá para ii>1 ó ii<-1 enteros. Esta corrección se realizó en la linea 15 del código.
+
+A continuación se analizó la función baz, se modificó el condicional if de la linea 66,
+debido a que este no tenia un retorno definido, razón por la cual se colocó
+return 0; debido a que este no influye en el código fuera de la función al ser
+25.9 diferente de 0.
+En esta misma función baz se eliminó la linea 72 que llamaba a una variable
+double v, que se asumió se trataba de una operación anterior al desarrollo del
+programa al no ser utilizada en ninguna parte del código.
+
+Continuando, se redefinió la variable pointer double *x por el array
+x[NX]={0,0}. Este cambio se realizó para evitar el "leak" de memoria que produce
+el uso de un pointer ded forma indistinta a un array, lo cual solo en algunos
+casos es validos y este código no era uno de estos. Junto a esto, se inicializó
+el array con valores {0,0}. De igual forma, en la linea 24 se inicializaron los
+valores de los arrays y, z.
+En las lineas 26 a 28, se utiliza la función print_array para imprimir los
+valores que toman cada una de las variables contenidas en los arrays.
+
+En la linea 30 a 31 se cambió el for utilizado para dar los valores a x[0] y
+x[1] por la escritura directa de los valores, más que nada por simplicidad.
+Ligado a esto, se modificaron los valores dados en la variable size en la linea
+38, sin embargo, se mantuvo la expresión como la suma del tamaño del array más
+0, para mantener la forma. Se cree que este error en el código se pŕoducia por
+una mala comprensión de la fórmula para modificar los valores de los arrays y se
+deberia utilizar un for para z y en ese momento llamar a la función print_array.
+En el programa corrregido se omite esta suposición debido a que se estaba
+modificando el valor de size, lo que se puede ser el error anterior junto a
+un error de tipeo.
+
+En la linea 40, se reescribió el for eliminando el cambio que se hacia al array
+x, pues daba como resultado la obtención de los valores ya inicializados
+anteriormente al tiempo que salia del tamaño del array. Por estos motivos, se
+dejó unicamente el cambio en y dentro de la función for.
+
+Finalmente, se crearon tres nuevas funciones print_array1, print_array2,
+print_array3, las cuales modifican el valor de los arrays restando a sus
+componentes las cantidades especificadas en el código original. Se llamó a estas
+nuevas funciones debido a que la forma original con la función  print_array no
+permitia modificar los componentes y se estaba cayendo en el error de sumar un
+array con un double, lo cual no es posible al salirse del tamaño de array
+determinado (esto solo en el caso que el double se considere un array con el
+mismo tamaño del array, lo que genera más problemas). Para esto se modificaron
+los valores dentro de las funciones recien creadas manteniendo el tamaño de los
+arrays, como se puede notar de las lineas 79 a 113.
+
+Realizando todas estas correcciones, la ejecución del código utiliza las
+funciones foo y baz para determinar como varian los valores dados de ii y jj,
+imprime los valores inicializados de los arrays x, y, z, luego modifica el valor
+de las componentes de x y reimprime los valores de los arrays x,y,z.
+A continuación, modifica los valores del array y, nuevamente imprime
+los valores de los arrays x,y,z pero modificando sus componentes siguiendo las
+funciones  print_arrayn, {n=1,2,3}. El programa concluye con el
+return EXIT_SUCCESS.
