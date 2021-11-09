@@ -20,14 +20,15 @@ int main (int argc, char **argv)
     baz(25.9);
 
     const int NX= 2, NY=3, NZ = 4;
-    double x[NX]={0,1}; //se cambia el pointer por un array
+    double x[NX]={0,0}; //se cambia el pointer por un array
     double  y[NY]={0,0,0}, z[NZ]={0,0,0,0}; //inicializando los valores de y, z
     int ee; //se cambian las variables para evitar la doble declaracion
     print_array(x, NX); //se modifica el tamaño del array para que
     print_array(y, NY);//concuerde con el definido para x, y, z
     print_array(z, NZ);
     std::cout << std::endl;
-
+    x[0]=0;
+    x[1]=1;
    // for (int uu=0; uu<=Nx; ++uu) Asignando los valores desde el inicio para
    // {                            simplificar el codigo
      //   x[uu]=uu;
