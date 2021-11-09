@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cmath>
 
-int foo(int a, int b);
+int foo(int  a, int  b);
 int bar(int a, int b);
 double baz (double x);
 void print_array(const double data[], const int & size);
@@ -11,8 +11,8 @@ void print_array2(const double data[], const int & size);
 void print_array3(const double data[], const int & size);
 int main (int argc, char **argv)
 {
-    int ii, jj;
-    ii=2; //modificando el valor para evitar la indeterminacion 1/0
+    double  ii, jj;
+    ii=1; //modificando el valor para evitar la indeterminacion 1/0
     jj=-1;
     foo(ii, jj);
     foo(jj, ii);
@@ -20,10 +20,9 @@ int main (int argc, char **argv)
     baz(25.9);
 
     const int NX= 2, NY=3, NZ = 4;
-    double *x=new double[]{0,1};
-        double  y[NY]={0,0,0}, z[NZ]={0,0,0,0}; //inicializando los valores de y, z
+    double x[NX]={0,1}; //se cambia el pointer por un array
+    double  y[NY]={0,0,0}, z[NZ]={0,0,0,0}; //inicializando los valores de y, z
     int ee; //se cambian las variables para evitar la doble declaracion
-    int Ny=2; //Para mantenerse en el array durante el uso del for
     print_array(x, NX); //se modifica el tamaño del array para que
     print_array(y, NY);//concuerde con el definido para x, y, z
     print_array(z, NZ);
@@ -51,14 +50,14 @@ int main (int argc, char **argv)
 
  }
 
-int foo(int a, int b)
+int  foo(int  a, int  b)
 {
     return a/b + b/bar(a,b) + b/a;
 }
 
 int bar(int a, int b)
 {
-    unsigned int c=a;
+    unsigned int  c=a;
     return c + a - b;
 }
 double baz(double x)
